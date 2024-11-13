@@ -8,7 +8,12 @@ var imageCanvas, imageContext, turtleCanvas, turtleContext;
 var stepByStep = false;
 var steps = [];
 reset();
-
+function toggleCheckbox(x) {
+     var xhr = new XMLHttpRequest();
+     xhr.open("GET", "/action?go=" + x, true);
+     xhr.send();
+   }
+   window.onload = document.getElementById("photo").src = window.location.href.slice(0, -1) + ":81/stream";
 /* ====================================  turtle API functions =====================================*/
 window.setSpeed = function(pause) {
     if(window.location.hash==="#force"){
@@ -49,6 +54,7 @@ window.forward = function(distance, step = false) {
         steps.push(["forward", distance]);
     }
     else {
+        toggleCheckbox("go");
         distance = parseFloat(distance)
         imageContext.save();
         centerCoords(imageContext);

@@ -19,5 +19,4 @@ color("red")
 color("#ff0000")
 */
 
-
-go(100);
+forward(100);
